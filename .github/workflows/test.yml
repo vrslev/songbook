@@ -1,0 +1,97 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Cache Python
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/pypoetry
+          key: test-${{ hashFiles('pyproject.toml') }}
+
+      - name: Cache pre-commit
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pre-commit
+          key: lint-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install Python dependencies
+        run: |
+          pip install -U poetry pre-commit
+          poetry install
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Lint
+        run: pre-commit run --color=always --all-files
+
+  py:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/pypoetry
+          key: test-${{ hashFiles('pyproject.toml') }}
+
+      - name: Install package
+        run: |
+          pip install -U poetry
+          poetry install
+
+      - name: Test
+        run: poetry run pytest --color=yes --cov
+
+  ts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install package
+        run: npm ci
+
+      - name: Test
+        run: npm test

@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "backend"
+version = "0.0.0"
+description = "Songbook"
+authors = ["Lev Vereshchagin <mail@vrslev.com>"]
+
+[tool.poetry.dependencies]
+# Vercel requires Python 3.9: https://vercel.com/docs/runtimes#official-runtimes/python/python-version
+python = "~3.9"
+passlib = {extras = ["bcrypt"], version = "1.7.4"}
+python-jose = {extras = ["cryptography"], version = "3.3.0"}
+python-multipart = "0.0.5"
+secure = "0.3.0"
+typing-extensions = "4.3.0"
+sentry-sdk = {extras = ["fastapi"], version = "1.9.5"}
+fastapi = "0.81.0"
+python-dotenv = "0.20.0"
+httpx = "0.23.0"
+
+[tool.poetry.dev-dependencies]
+requests = "2.28.1"
+uvicorn = {extras = ["standard"], version = "0.18.3"}
+black = "22.6.0"
+pre-commit = "2.20.0"
+pytest = "7.1.2"
+pytest-cov = "3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+pythonVersion = "3.9"
+reportPrivateUsage = false
+reportMissingTypeStubs = false
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.report]
+skip_covered = true
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING",
+    "class .*(Protocol)",
+    "raise NotImplementedError",
+]

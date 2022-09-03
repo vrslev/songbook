@@ -1,0 +1,6 @@
+.env
+.pytest_cache
+coverage
+dist
+scripts
+tests

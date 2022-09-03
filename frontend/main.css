@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+  @apply text-base;
+}
+
+.input-bordered {
+  @apply focus:outline-none;
+}
+
+.input-sm {
+  @apply h-9;
+}
+
+.btn {
+  @apply rounded-xl;
+}
+
+.label {
+  @apply p-1 text-sm;
+}
+
+.textarea-bordered {
+  @apply focus:outline-none;
+}
+
+.select-sm {
+  @apply h-9;
+}
+
+.select-bordered {
+  @apply focus:outline-none;
+}
+
+.error-message {
+  @apply p-1 text-sm italic text-error;
+}
+
+.base-content-secondary {
+  @apply text-[#71717a] dark:text-[#a1a1aa];
+}
+
+.icon {
+  @apply h-4 w-4;
+}

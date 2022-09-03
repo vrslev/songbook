@@ -1,0 +1,12 @@
+.DS_Store
+
+.venv
+.env
+.coverage
+.pytest_cache
+*.pyc
+
+node_modules
+dist
+coverage
+.vercel
