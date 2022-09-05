@@ -14,7 +14,7 @@ secure = "0.3.0"
 typing-extensions = "4.3.0"
 sentry-sdk = {extras = ["fastapi"], version = "1.9.7"}
 fastapi = "0.81.0"
-python-dotenv = "0.20.0"
+python-dotenv = "0.21.0"
 httpx = "0.23.0"
 
 [tool.poetry.dev-dependencies]
