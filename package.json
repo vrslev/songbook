@@ -45,7 +45,7 @@
     "unplugin-vue-components": "0.22.4",
     "vite": "2.9.14",
     "vitest": "0.22.1",
-    "vue-tsc": "0.40.4"
+    "vue-tsc": "0.40.7"
   },
   "postcss": {
     "plugins": {
