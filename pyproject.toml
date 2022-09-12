@@ -13,7 +13,7 @@ python-multipart = "0.0.5"
 secure = "0.3.0"
 typing-extensions = "4.3.0"
 sentry-sdk = {extras = ["fastapi"], version = "1.9.8"}
-fastapi = "0.82.0"
+fastapi = "0.83.0"
 python-dotenv = "0.21.0"
 httpx = "0.23.0"
 
