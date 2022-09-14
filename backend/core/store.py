@@ -125,17 +125,13 @@ class DetaBaseStore(_StoreWithAttrs[Model, ModelNoKey]):
         return self.model(**item)
 
     async def update(self, key: str, value: ModelNoKey) -> Model | None:
-        new_value = self._model_no_key_to_model(key, value)
-
         async with self.client() as client:
-            response = await client.patch(
-                f"/items/{key}", json={"set": new_value.dict()}
-            )
+            response = await client.patch(f"/items/{key}", json={"set": value.dict()})
         if response.status_code == 404:
             return None
         response.raise_for_status()
 
-        return new_value
+        return self._model_no_key_to_model(key, value)
 
     async def delete(self, key: str) -> None:
         async with self.client() as client:
