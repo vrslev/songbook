@@ -29,6 +29,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./frontend", import.meta.url)),
     },
   },
+  build: {
+    sourcemap: true,
+  },
   plugins: [
     vue({
       template: {
