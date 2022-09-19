@@ -44,7 +44,7 @@
     "unplugin-auto-import": "0.11.2",
     "unplugin-vue-components": "0.22.7",
     "vite": "2.9.14",
-    "vitest": "0.23.1",
+    "vitest": "0.23.4",
     "vue-tsc": "0.40.7"
   },
   "postcss": {
