@@ -8,7 +8,7 @@
     "generateClient": "node scripts/generateClient.js"
   },
   "dependencies": {
-    "@heroicons/vue": "2.0.10",
+    "@heroicons/vue": "2.0.11",
     "@sentry/vue": "7.12.1",
     "@vueuse/components": "9.3.0",
     "@vueuse/core": "9.3.0",
