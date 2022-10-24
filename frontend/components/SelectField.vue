@@ -14,7 +14,7 @@ defineProps<{
       as="select"
       :name="name"
       :label="label"
-      class="select select-bordered select-sm"
+      class="select-bordered select select-sm"
     >
       <option
         v-for="({ label, value }, idx) in [{ label: '', value: '' }].concat(

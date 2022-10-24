@@ -66,7 +66,7 @@ async function onUpdatePassword(data: unknown, ctx: SubmissionContext) {
       >
         <div class="flex items-start gap-2 p-2">
           <h1 class="text-2xl font-bold">{{ user.username }}</h1>
-          <span class="badge badge-outline" v-if="user.is_superuser">
+          <span class="badge-outline badge" v-if="user.is_superuser">
             суперюзер
           </span>
         </div>
@@ -116,6 +116,6 @@ async function onUpdatePassword(data: unknown, ctx: SubmissionContext) {
   @apply btn flex-nowrap gap-2;
 }
 .button-outline {
-  @apply btn btn-outline flex-nowrap gap-2;
+  @apply btn-outline btn flex-nowrap gap-2;
 }
 </style>

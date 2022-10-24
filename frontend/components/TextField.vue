@@ -10,7 +10,7 @@ defineProps<{ name: string; label: string; type?: string }>();
       :type="type || 'text'"
       :name="name"
       :label="label"
-      class="input input-bordered input-sm"
+      class="input-bordered input input-sm"
     />
   </FieldArea>
 </template>

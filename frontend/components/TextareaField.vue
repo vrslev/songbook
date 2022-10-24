@@ -11,7 +11,7 @@ defineProps<{ name: string; label: string; rows: string }>();
       :name="name"
       :label="label"
       :rows="rows"
-      class="textarea textarea-bordered text-sm"
+      class="textarea-bordered textarea text-sm"
     />
   </FieldArea>
 </template>

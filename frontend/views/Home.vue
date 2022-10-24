@@ -27,7 +27,7 @@ watchDebounced(searchQuery, updateHash, { debounce: 500 });
         type="search"
         placeholder="Искать"
         v-model="searchQuery"
-        class="input input-bordered flex-auto rounded-xl dark:border-none"
+        class="input-bordered input flex-auto rounded-xl dark:border-none"
         data-test="search-input"
       />
 

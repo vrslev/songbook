@@ -21,7 +21,7 @@ const classes = computed(() => ({
         v-on-click-outside="() => (open = false)"
       >
         <p class="flex-auto text-lg font-semibold">Вы уверены?</p>
-        <button class="btn btn-sm" @click="submit" data-test="delete-yes-btn">
+        <button class="btn-sm btn" @click="submit" data-test="delete-yes-btn">
           Да
         </button>
       </div>
