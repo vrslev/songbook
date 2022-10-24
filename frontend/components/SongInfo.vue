@@ -88,7 +88,7 @@ function getKey() {
           Тональность
         </h3>
         <select
-          class="select select-bordered select-xs"
+          class="select-bordered select select-xs"
           name="key"
           v-model="currentKey"
           data-test="key-select"
@@ -116,7 +116,7 @@ section {
 }
 
 .title-btn {
-  @apply btn btn-outline btn-sm whitespace-nowrap;
+  @apply btn-outline btn-sm btn whitespace-nowrap;
 }
 
 article {
