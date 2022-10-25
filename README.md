@@ -44,10 +44,9 @@ Thoroughly tested with [Pytest](https://pytest.org/) and [Vitest](https://vitest
 
 ### Running
 
-Install Python 3.9 and [Poetry](https://python-poetry.org/), and Node, then:
+Install Python 3.9 and [Hatch](https://hatch.pypa.io), and Node, then:
 
 ```sh
-poetry install  # Install Python dependencies
 npm install  # Install Node dependencies
 ```
 
@@ -58,7 +57,7 @@ Run `make backend` to start backend server (with prefilled testing data, otherwi
 ### Testing
 
 ```sh
-poetry run pytest  # Run Python tests
+hatch run pytest  # Run Python tests
 npm test  # Run Node tests
 ```
 

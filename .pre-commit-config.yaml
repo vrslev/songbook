@@ -11,12 +11,6 @@ repos:
         language: system
         pass_filenames: false
         entry: npm run generateClient
-      - id: requirements-txt
-        stages: [push]
-        name: requirements-txt
-        language: system
-        pass_filenames: false
-        entry: poetry export -o requirements.txt
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
@@ -48,7 +42,7 @@ repos:
         language: system
         types_or: [python]
         pass_filenames: false
-        entry: poetry run npx pyright --venv-path .venv
+        entry: hatch run npx pyright --venv-path .venv
 
       - id: tsc
         name: tsc

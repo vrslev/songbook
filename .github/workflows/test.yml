@@ -24,7 +24,7 @@ jobs:
         with:
           path: |
             ~/.cache/pip
-            ~/.cache/pypoetry
+            ~/.cache/hatch
           key: test-${{ hashFiles('pyproject.toml') }}
 
       - name: Cache pre-commit
@@ -42,8 +42,8 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install -U poetry pre-commit
-          poetry install
+          python -m venv .venv
+          .venv/bin/pip install -e ".[dev]"
 
       - name: Install Node dependencies
         run: npm ci
@@ -67,16 +67,16 @@ jobs:
         with:
           path: |
             ~/.cache/pip
-            ~/.cache/pypoetry
+            ~/.cache/hatch
           key: test-${{ hashFiles('pyproject.toml') }}
 
       - name: Install package
         run: |
-          pip install -U poetry
-          poetry install
+          python -m venv .venv
+          .venv/bin/pip install -e ".[dev]"
 
       - name: Test
-        run: poetry run pytest --color=yes --cov
+        run: .venv/bin/pytest --color=yes --cov
 
   ts:
     runs-on: ubuntu-latest
