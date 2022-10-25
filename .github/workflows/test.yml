@@ -42,8 +42,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          python -m venv .venv
-          .venv/bin/pip install -e ".[dev]"
+          pip install -e .[dev]
 
       - name: Install Node dependencies
         run: npm ci
@@ -71,12 +70,10 @@ jobs:
           key: test-${{ hashFiles('pyproject.toml') }}
 
       - name: Install package
-        run: |
-          python -m venv .venv
-          .venv/bin/pip install -e ".[dev]"
+        run: pip install -e .[dev]
 
       - name: Test
-        run: .venv/bin/pytest --color=yes --cov
+        run: pytest --color=yes --cov
 
   ts:
     runs-on: ubuntu-latest
