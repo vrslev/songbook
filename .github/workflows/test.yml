@@ -41,15 +41,13 @@ jobs:
           cache: npm
 
       - name: Install Python dependencies
-        run: |
-          python -m venv .venv
-          .venv/bin/pip install -e ".[dev]"
+        run: pip install -U hatch
 
       - name: Install Node dependencies
         run: npm ci
 
       - name: Lint
-        run: pre-commit run --color=always --all-files
+        run: hatch run pre-commit run --color=always --all-files
 
   py:
     runs-on: ubuntu-latest
@@ -70,13 +68,11 @@ jobs:
             ~/.cache/hatch
           key: test-${{ hashFiles('pyproject.toml') }}
 
-      - name: Install package
-        run: |
-          python -m venv .venv
-          .venv/bin/pip install -e ".[dev]"
+      - name: Install Python dependencies
+        run: pip install -U hatch
 
       - name: Test
-        run: .venv/bin/pytest --color=yes --cov
+        run: hatch run pytest --color=yes --cov
 
   ts:
     runs-on: ubuntu-latest
