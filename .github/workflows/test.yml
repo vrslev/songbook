@@ -22,16 +22,13 @@ jobs:
       - name: Cache Python
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.cache/pip
-            ~/.cache/hatch
+          path: ~/.cache/pip
           key: test-${{ hashFiles('pyproject.toml') }}
 
       - name: Cache pre-commit
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.cache/pre-commit
+          path: ~/.cache/pre-commit
           key: lint-${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: Setup Node
@@ -64,9 +61,7 @@ jobs:
       - name: Cache
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.cache/pip
-            ~/.cache/hatch
+          path: ~/.cache/pip
           key: test-${{ hashFiles('pyproject.toml') }}
 
       - name: Install package
