@@ -42,7 +42,7 @@ repos:
         language: system
         types_or: [python]
         pass_filenames: false
-        entry: unpx pyright --venv-path .venv
+        entry: npx pyright --venv-path .venv
 
       - id: tsc
         name: tsc
