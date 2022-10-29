@@ -44,7 +44,7 @@ Thoroughly tested with [Pytest](https://pytest.org/) and [Vitest](https://vitest
 
 ### Running
 
-Install Python 3.9 and [Hatch](https://hatch.pypa.io), and Node, then:
+Install Python 3.9 and Node, then:
 
 ```sh
 python -m venv .venv && .venv/bin/pip install -e .[dev]  # Install Python dependencies
