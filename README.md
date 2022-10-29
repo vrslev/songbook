@@ -47,6 +47,7 @@ Thoroughly tested with [Pytest](https://pytest.org/) and [Vitest](https://vitest
 Install Python 3.9 and [Hatch](https://hatch.pypa.io), and Node, then:
 
 ```sh
+python -m venv .venv && .venv/bin/pip install -e .[dev]  # Install Python dependencies
 npm install  # Install Node dependencies
 ```
 
@@ -57,7 +58,7 @@ Run `make backend` to start backend server (with prefilled testing data, otherwi
 ### Testing
 
 ```sh
-hatch run pytest  # Run Python tests
+./.venv/bin/pytest  # Run Python tests
 npm test  # Run Node tests
 ```
 
