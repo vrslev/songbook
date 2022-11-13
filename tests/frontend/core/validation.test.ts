@@ -42,8 +42,15 @@ describe("song schema", () => {
         sections: [{ name: "Acapella", notes: "Some text" }],
       },
     },
-  ])("fails", (value: unknown) => {
-    expect(() => songSchema.validateSync(value)).toThrow(ValidationError);
+  ])("fails", async (value: unknown) => {
+    let threw = false;
+    try {
+      await songSchema.validate(value);
+    } catch (e) {
+      expect(e).toBeInstanceOf(ValidationError);
+      threw = true;
+    }
+    expect(threw).toBeTruthy();
   });
 });
 

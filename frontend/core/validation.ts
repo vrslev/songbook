@@ -16,7 +16,7 @@ import {
   type TestContext,
 } from "yup";
 
-import { NoteSequenceValidationError, parseNoteSequence } from "./noteSequence";
+import initChordChart, { validateChart } from "chord-chart";
 
 function passEmptyObjectAsUndefined(value: { [K: string]: unknown }) {
   return Object.values(value).every((el) => !el) ? undefined : value;
@@ -26,14 +26,14 @@ function removeEmptyObjectsFromArray(value: { [K: string]: unknown }[]) {
   return value.filter((el) => passEmptyObjectAsUndefined(el));
 }
 
-function validateNotes(value: string | undefined, ctx: TestContext) {
+async function validateNotes(value: string | undefined, ctx: TestContext) {
   if (!value) return true;
+  await initChordChart;
 
   try {
-    parseNoteSequence(value);
+    validateChart(value);
   } catch (e) {
-    if (e instanceof NoteSequenceValidationError)
-      return ctx.createError({ message: `${e.message}: \`${e.value}\`` });
+    if (e instanceof Error) return ctx.createError({ message: e.message });
     return false;
   }
 
