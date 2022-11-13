@@ -48,7 +48,25 @@ class SongLinks(BaseModel):
 
 
 TimeSignature = Literal["3/4", "4/4", "6/4", "6/8", "8/8"]
-Key = Literal["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+Key = Literal[
+    "C",
+    "C#",
+    "Db",
+    "D",
+    "D#",
+    "Eb",
+    "E",
+    "F",
+    "F#",
+    "Gb",
+    "G",
+    "G#",
+    "Ab",
+    "A",
+    "A#",
+    "Bb",
+    "H",
+]
 SectionName = Literal[
     "Acapella",
     "Breakdown",
