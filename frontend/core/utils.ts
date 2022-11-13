@@ -1,5 +1,5 @@
 import type { ChordsSection, Song, SongChords } from "@/client";
-import { tranposeChart } from "chord-chart";
+import { tranposeChart } from "chord-chart-wasm";
 
 export function getSongTitle(song: Song): string {
   return song.artist ? `${song.name} — ${song.artist}` : song.name;

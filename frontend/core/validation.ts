@@ -16,7 +16,7 @@ import {
   type TestContext,
 } from "yup";
 
-import initChordChart, { validateChart } from "chord-chart";
+import initChordChart, { validateChart } from "chord-chart-wasm";
 
 function passEmptyObjectAsUndefined(value: { [K: string]: unknown }) {
   return Object.values(value).every((el) => !el) ? undefined : value;
