@@ -1,4 +1,4 @@
-import requests
+import httpx
 from fastapi.testclient import TestClient
 
 from backend.app.routers.auth import Token
@@ -13,7 +13,7 @@ def send_login_request(client: TestClient, username: str, password: str):
     )
 
 
-def assert_login_response_401(response: requests.Response):
+def assert_login_response_401(response: httpx.Response):
     assert response.status_code == 401
     assert response.json()["detail"] == "Incorrect username or password"
 

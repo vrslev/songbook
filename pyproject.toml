@@ -23,6 +23,7 @@ dev = ["requirements-dev.txt"]
 pythonVersion = "3.9"
 reportPrivateUsage = false
 reportMissingTypeStubs = false
+reportUnknownMemberType = false # due to httpx typing inaccuracies
 
 [tool.isort]
 profile = "black"
