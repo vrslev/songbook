@@ -16,7 +16,7 @@ import {
   type TestContext,
 } from "yup";
 
-import initChordChart, { validateChart } from "chord-chart-wasm";
+import { validateChart } from "chord-chart-wasm";
 
 function passEmptyObjectAsUndefined(value: { [K: string]: unknown }) {
   return Object.values(value).every((el) => !el) ? undefined : value;
@@ -28,7 +28,6 @@ function removeEmptyObjectsFromArray(value: { [K: string]: unknown }[]) {
 
 async function validateNotes(value: string | undefined, ctx: TestContext) {
   if (!value) return true;
-  await initChordChart;
 
   try {
     validateChart(value);

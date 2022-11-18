@@ -1,5 +1,5 @@
 import type { ChordsSection, Song, SongChords } from "@/client";
-import { tranposeChart } from "chord-chart-wasm";
+import { transposeChart } from "chord-chart-wasm";
 
 export function getSongTitle(song: Song): string {
   return song.artist ? `${song.name} — ${song.artist}` : song.name;
@@ -19,10 +19,9 @@ export function transposeSong(
 ): ChordsSection[] | undefined {
   if (!song?.chords || !targetKey) return;
   const chords = song.chords;
-
   const transposeSection = (section: ChordsSection) => ({
     name: section.name,
-    notes: tranposeChart(section.notes, chords.key, targetKey),
+    notes: transposeChart(section.notes, chords.key, targetKey),
   });
 
   return chords.sections.map(transposeSection);
