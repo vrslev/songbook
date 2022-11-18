@@ -26,7 +26,7 @@ function removeEmptyObjectsFromArray(value: { [K: string]: unknown }[]) {
   return value.filter((el) => passEmptyObjectAsUndefined(el));
 }
 
-async function validateNotes(value: string | undefined, ctx: TestContext) {
+function validateNotes(value: string | undefined, ctx: TestContext) {
   if (!value) return true;
 
   try {

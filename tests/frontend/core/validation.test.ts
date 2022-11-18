@@ -8,15 +8,15 @@ describe("song schema", () => {
     { name: "Song name" },
     { name: "Song name", chords: {}, links: {}, tempo: undefined },
     { name: "Song name", original_name: null, artist: null },
-  ])("passes", async (value: unknown) => {
-    await songSchema.validate(value);
+  ])("passes", (value: unknown) => {
+    songSchema.validateSync(value);
   });
 
-  it("does not change result", async () => {
-    expect(await songSchema.validate(mockSongNoKey)).toEqual(mockSongNoKey);
+  it("does not change result", () => {
+    expect(songSchema.validateSync(mockSongNoKey)).toEqual(mockSongNoKey);
   });
 
-  it("passes with extra rows", async () => {
+  it("passes with extra rows", () => {
     const newObj = JSON.parse(JSON.stringify(mockSongNoKey)) as SongNoKey;
 
     // @ts-ignore
@@ -28,7 +28,7 @@ describe("song schema", () => {
     // @ts-ignore
     newObj.lyrics?.push({ name: undefined, text: undefined });
 
-    const result = await songSchema.validate(newObj);
+    const result = songSchema.validateSync(newObj);
     expect(result).toEqual(mockSongNoKey);
   });
 
@@ -42,10 +42,10 @@ describe("song schema", () => {
         sections: [{ name: "Acapella", notes: "Some text" }],
       },
     },
-  ])("fails", async (value: unknown) => {
+  ])("fails", (value: unknown) => {
     let threw = false;
     try {
-      await songSchema.validate(value);
+      songSchema.validateSync(value);
     } catch (e) {
       expect(e).toBeInstanceOf(ValidationError);
       threw = true;
@@ -55,8 +55,8 @@ describe("song schema", () => {
 });
 
 describe("login schema", () => {
-  it("passes", async () => {
-    await userSchema.validate({ username: "lev", password: "pass" });
+  it("passes", () => {
+    userSchema.validateSync({ username: "lev", password: "pass" });
   });
 
   it.each([{ username: "lev" }, {}, { password: "pass" }])(
