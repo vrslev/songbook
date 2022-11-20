@@ -16,7 +16,7 @@ import {
   type TestContext,
 } from "yup";
 
-import { validateChart } from "chord-chart-wasm";
+import { validateChart, ValidationError } from "chord-chart-wasm";
 
 function passEmptyObjectAsUndefined(value: { [K: string]: unknown }) {
   return Object.values(value).every((el) => !el) ? undefined : value;
@@ -26,13 +26,31 @@ function removeEmptyObjectsFromArray(value: { [K: string]: unknown }[]) {
   return value.filter((el) => passEmptyObjectAsUndefined(el));
 }
 
+function translateChordChartValidationError(error: ValidationError): string {
+  switch (error.type) {
+    case "NoNatural":
+      return `нет названия ноты`;
+    case "InvalidNatural":
+      return `неверное название ноты: ${error.value}`;
+    case "InvalidNote":
+      return `неверная нота: ${error.value}`;
+    case "BarLineShouldStartWithStripe":
+      return `строка с тактами должна начинаться с полосочки: ${error.value}`;
+    case "BarLineShouldEndWithStripe":
+      return `строка с тактами должна заканчиваться полосочкой: ${error.value}`;
+  }
+}
+
 function validateNotes(value: string | undefined, ctx: TestContext) {
   if (!value) return true;
 
   try {
     validateChart(value);
   } catch (e) {
-    if (e instanceof Error) return ctx.createError({ message: e.message });
+    if (e instanceof ValidationError)
+      return ctx.createError({
+        message: translateChordChartValidationError(e),
+      });
     return false;
   }
 
