@@ -8,6 +8,5 @@
   "javascript.suggestionActions.enabled": false,
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "css.lint.unknownAtRules": "ignore",
-  "python.analysis.diagnosticMode": "workspace",
-  "python.analysis.typeCheckingMode": "strict"
+  "python.analysis.diagnosticMode": "workspace"
 }

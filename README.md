@@ -44,22 +44,22 @@ Thoroughly tested with [Pytest](https://pytest.org/) and [Vitest](https://vitest
 
 ### Running
 
-Install Python 3.9 and Node, then:
+Install Python 3.9 and Node.js, then:
 
 ```sh
-python -m venv .venv && .venv/bin/pip install -e .[dev]  # Install Python dependencies
-npm install  # Install Node dependencies
+make install  # Python
+npm install  # JavaScript
 ```
 
 After that you should create `.env` and fill it according to [`backend.app.factory.Settings` class](https://github.com/vrslev/songbook/blob/45917e2826e491c0d6ab971f09d7e9c1874f2884/backend/app/factory.py#L38). Also there's `VITE_SENTRY_DSN` for [Sentry](https://sentry.io/) in the browser.
 
-Run `make backend` to start backend server (with prefilled testing data, otherwise: `make backend-clean`), open another terminal tab and run `make frontend` to start frontend server. Open `localhost:3000` and login with username and password `super`. Done.
+Run `make start` to start backend server (with prefilled testing data, otherwise: `make backend-clean`), open another terminal tab and run `npm start` to start frontend server. Open `localhost:3000` and login with username and password `super`. Done.
 
 ### Testing
 
 ```sh
-./.venv/bin/pytest  # Run Python tests
-npm test  # Run Node tests
+make test  # Python
+npm test  # JavaScript
 ```
 
 ### Production — Vercel & Deta

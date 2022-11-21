@@ -20,6 +20,9 @@ files = ["requirements.txt"]
 dev = ["requirements-dev.txt"]
 
 [tool.pyright]
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "strict"
 pythonVersion = "3.9"
 reportPrivateUsage = false
 reportMissingTypeStubs = false
