@@ -84,7 +84,7 @@ def test_song_links_blank_strings(v: Any, expected: Any):
 
 @pytest.mark.parametrize(
     ["v", "expected"],
-    [["| D | B | A# |", "| D | B | A# |"], [" |  D | B | A#|   ", "| D | B | A# |"]],
+    [["| D | B | A# |", "| D | H | A# |"], [" |  D | H | A#|   ", "| D | H | A# |"]],
 )
 def test_note_sequence_passes(v: Any, expected: str):
     assert NoteSequenceModel(seq=v).seq == expected

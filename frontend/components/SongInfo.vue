@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { Song, SongChords } from "@/client";
-import { NORMALIZED_NOTES, transposeSong } from "@/core/noteSequence";
+import { SongChords, type Song } from "@/client";
+import { transposeSong } from "@/core/utils";
 import { getSongSubtitle, getSongTitle } from "@/core/utils";
 import { sectionsTranslations } from "@/i18n";
 import { getHash, updateHash } from "@/router";
 import { PencilIcon, TrashIcon } from "@heroicons/vue/20/solid";
+import { RouterLink } from "vue-router";
 
 const props = defineProps<{ song: Song; isLoggedIn: boolean }>();
 defineEmits<{
@@ -32,7 +33,9 @@ const lyricsSections = props.song.lyrics?.map((section) => ({
 
 function getKey() {
   const hash = getHash() as SongChords.key;
-  return NORMALIZED_NOTES.includes(hash) ? hash : props.song.chords?.key;
+  return Object.values(SongChords.key).includes(hash)
+    ? hash
+    : props.song.chords?.key;
 }
 </script>
 
@@ -94,7 +97,7 @@ function getKey() {
           data-test="key-select"
         >
           <option
-            v-for="(note, idx) in NORMALIZED_NOTES"
+            v-for="(note, idx) in Object.values(SongChords.key)"
             :key="idx"
             :value="note"
           >

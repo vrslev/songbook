@@ -13,15 +13,20 @@ export namespace SongChords {
   export enum key {
     C = "C",
     C_ = "C#",
+    DB = "Db",
     D = "D",
     D_ = "D#",
+    EB = "Eb",
     E = "E",
     F = "F",
     F_ = "F#",
+    GB = "Gb",
     G = "G",
     G_ = "G#",
+    AB = "Ab",
     A = "A",
     A_ = "A#",
-    B = "B",
+    BB = "Bb",
+    H = "H",
   }
 }

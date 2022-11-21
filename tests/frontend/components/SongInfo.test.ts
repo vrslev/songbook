@@ -1,7 +1,7 @@
 // @vitest-environment jsdom https://github.com/vuejs/test-utils/issues/1385
+import { SongChords } from "@/client";
 import SongInfo from "@/components/SongInfo.vue";
 import SongInfoTextSections from "@/components/SongInfoTextSections.vue";
-import { NORMALIZED_NOTES } from "@/core/noteSequence";
 import { sectionsTranslations } from "@/i18n";
 import { router } from "@/router";
 import { DOMWrapper, flushPromises, mount, VueWrapper } from "@vue/test-utils";
@@ -151,7 +151,7 @@ describe("chords", () => {
 
     expect(wrapper.getByTestId("key-name").text()).toBe("Тональность");
     expect(getKeySwitcherValue(select)).toBe(mockSong.chords?.key);
-    expect(options).toStrictEqual(NORMALIZED_NOTES);
+    expect(options).toStrictEqual(Object.values(SongChords.key));
   });
 
   it("shows notes", () => {

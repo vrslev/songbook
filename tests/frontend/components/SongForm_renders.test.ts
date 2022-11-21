@@ -1,7 +1,6 @@
 // @vitest-environment jsdom: support dot in selectors: https://github.com/capricorn86/happy-dom/issues/512
-import { ChordsSection, LyricsSection, SongTempo } from "@/client";
+import { ChordsSection, LyricsSection, SongChords, SongTempo } from "@/client";
 import SongForm from "@/components/SongForm.vue";
-import { NORMALIZED_NOTES } from "@/core/noteSequence";
 import { sectionsTranslations } from "@/i18n";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
 import { mockSong } from "../fixtures";
@@ -42,7 +41,7 @@ test.each([
     Object.values(SongTempo.time_signature),
     mockSong.tempo?.time_signature,
   ],
-  ["chords.key", NORMALIZED_NOTES, mockSong.chords?.key],
+  ["chords.key", Object.values(SongChords.key), mockSong.chords?.key],
 ])("select fields", (name: string, options: string[], content?: string) => {
   const element = getInputOrSelect(wrapper, name);
   expect(element.element.value).toBe(content);

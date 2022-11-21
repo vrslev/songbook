@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal, Optional
 
-from pydantic import BaseModel, HttpUrl, UrlHostError, validator
+import chord_chart
+from pydantic import BaseModel, HttpUrl, PydanticValueError, UrlHostError, validator
 from pydantic.validators import str_validator
 
-from backend.core.note_sequence import parse_note_sequence, stringify_note_sequence
 from backend.core.store import Store
 
 if TYPE_CHECKING:
@@ -48,7 +48,25 @@ class SongLinks(BaseModel):
 
 
 TimeSignature = Literal["3/4", "4/4", "6/4", "6/8", "8/8"]
-Key = Literal["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+Key = Literal[
+    "C",
+    "C#",
+    "Db",
+    "D",
+    "D#",
+    "Eb",
+    "E",
+    "F",
+    "F#",
+    "Gb",
+    "G",
+    "G#",
+    "Ab",
+    "A",
+    "A#",
+    "Bb",
+    "H",
+]
 SectionName = Literal[
     "Acapella",
     "Breakdown",
@@ -95,6 +113,10 @@ class SongTempo(BaseModel):
     time_signature: TimeSignature
 
 
+class NoteSequenceValidationError(PydanticValueError):
+    msg_template = "{message}"
+
+
 class NoteSequence(str):
     @classmethod
     def __get_validators__(cls):
@@ -103,8 +125,10 @@ class NoteSequence(str):
     @classmethod
     def parse(cls, value: Any):
         value = str_validator(value)
-        seq = parse_note_sequence(value)
-        return stringify_note_sequence(seq)
+        try:
+            return chord_chart.validate_chart(value)
+        except chord_chart.ValidationError as exc:
+            raise NoteSequenceValidationError(message=exc.args[0])
 
 
 class ChordsSection(BaseModel):
