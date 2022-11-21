@@ -10,7 +10,7 @@ repos:
         name: api-client
         language: system
         pass_filenames: false
-        entry: npm run generateClient
+        entry: npm run generate-client
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
@@ -37,20 +37,6 @@ repos:
 
   - repo: local
     hooks:
-      - id: pyright
-        name: pyright
-        language: system
-        types_or: [python]
-        pass_filenames: false
-        entry: npx pyright --venv-path .venv
-
-      - id: tsc
-        name: tsc
-        language: system
-        types_or: [javascript, ts, vue]
-        pass_filenames: false
-        entry: npx vue-tsc --noEmit
-
       - id: eslint
         name: eslint
         language: system
@@ -63,8 +49,3 @@ repos:
         language: system
         types_or: [javascript, ts, vue, html, css, json, yaml]
         entry: npx prettier --write --list-different --ignore-unknown
-
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.2
-    hooks:
-      - id: codespell
