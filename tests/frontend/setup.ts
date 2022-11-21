@@ -1,5 +1,7 @@
 import { config, DOMWrapper, VueWrapper } from "@vue/test-utils";
+import initChordChart from "chord-chart-wasm";
 import { beforeAll } from "vitest";
+
 function dataTestPlugin(wrapper: DOMWrapper<Node> | VueWrapper) {
   function getByTestId(selector: string): Omit<DOMWrapper<Element>, "exists"> {
     return wrapper.get(`[data-test='${selector}']`);
@@ -18,7 +20,8 @@ expect.extend({
   },
 });
 
-beforeAll(() => {
+beforeAll(async () => {
   config.plugins.VueWrapper.install(dataTestPlugin);
   config.plugins.DOMWrapper.install(dataTestPlugin);
+  await initChordChart();
 });
