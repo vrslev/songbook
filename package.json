@@ -14,7 +14,7 @@
     "@vueuse/components": "9.5.0",
     "@vueuse/core": "9.3.1",
     "axios": "1.1.3",
-    "chord-chart-wasm": "0.2.0",
+    "chord-chart-wasm": "0.3.0",
     "fuse.js": "6.6.2",
     "vee-validate": "4.6.10",
     "vite-plugin-favicons-inject": "2.1.0",

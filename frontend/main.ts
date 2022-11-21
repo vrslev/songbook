@@ -1,4 +1,5 @@
 import * as Sentry from "@sentry/vue";
+import initChordChart from "chord-chart-wasm";
 import { setLocale } from "yup";
 import App from "./App.vue";
 import { Client } from "./client";
@@ -31,4 +32,6 @@ app.provide(userKey, getUserService(getUserAPI(authClient)));
 
 app.use(router);
 
-app.mount("#app");
+initChordChart().then(() => {
+  app.mount("#app");
+});
