@@ -11,7 +11,7 @@
   "dependencies": {
     "@heroicons/vue": "2.0.13",
     "@sentry/vue": "7.24.2",
-    "@vueuse/components": "9.5.0",
+    "@vueuse/components": "9.7.0",
     "@vueuse/core": "9.6.0",
     "axios": "1.2.0",
     "chord-chart-wasm": "0.3.0",
